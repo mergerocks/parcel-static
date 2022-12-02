@@ -13,6 +13,5 @@ git checkout -B main
 git add -A
 git commit -m 'gh-pages'
 
-git push -f main:gh-pages
-
+git push -f git@github.com:a1exalexander/parcel-static.git main:gh-pages
 cd -
