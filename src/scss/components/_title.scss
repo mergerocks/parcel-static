@@ -1,0 +1,9 @@
+@use 'utils';
+
+.title {
+  text-align: center;
+  @include utils.text(utils.rem(32px), 700, utils.$color-white);
+  @include utils.media('tablet') {
+    font-size: utils.rem(42px);
+  }
+}

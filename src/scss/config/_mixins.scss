@@ -1,0 +1,128 @@
+@mixin text($font-size, $font-weight, $color, $line-height: false) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+  @if $line-height {
+    line-height: $line-height;
+  }
+}
+
+@mixin flex($jc: flex-start, $ai: stretch, $direction: row, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-wrap: $wrap;
+}
+
+@mixin size($size, $rounded: false) {
+  width: $size;
+  height: $size;
+  @if $rounded {
+    border-radius: 50%;
+  }
+}
+
+@mixin svg($size, $color) {
+  @include size($size);
+  fill: $color;
+}
+
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+  @content;
+}
+
+@mixin margin-auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+$breakpoints: (
+  'phone': 400px,
+  'phone-wide': 480px,
+  'tablet-small': 640px,
+  'tablet': 768px,
+  'tablet-medium': 860px,
+  'tablet-wide': 1024px,
+  'desktop': 1248px,
+  'desktop-wide': 1440px,
+);
+
+@mixin media($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin transition($transition-properties...) {
+  transition-property: $transition-properties;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+@mixin border($color: transparent) {
+  border: 1px solid $color;
+}
+
+@mixin background-image($position: false) {
+  background-size: cover;
+  background-repeat: no-repeat;
+  @if $position {
+    background-position: $position;
+  }
+  @content;
+}
+
+@mixin padding-hack($padding: 50%, $size: contain, $dev: false) {
+  position: relative;
+  height: 0;
+  padding-bottom: $padding;
+  @if $dev {
+    background-color: rgba(255, 0, 0, 0.555);
+  }
+  img,
+  iframe,
+  video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: $size;
+    @if $dev {
+      object-fit: contain;
+    }
+  }
+}

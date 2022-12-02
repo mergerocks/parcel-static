@@ -1,0 +1,19 @@
+{
+  "name": "parcel-1",
+  "version": "1.0.0",
+  "description": "",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "dev": "parcel src/index.html --no-cache",
+    "prebuild": "rimraf dist",
+    "build": "parcel build src/index.html --no-cache"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.0",
+    "parcel": "^2.8.0",
+    "rimraf": "^3.0.2"
+  }
+}

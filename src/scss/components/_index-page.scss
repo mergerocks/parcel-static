@@ -1,0 +1,19 @@
+@use 'utils';
+
+.index-page {
+  @include utils.flex(flex-start, center, column);
+  min-height: 100vh;
+  padding: {
+    top: 64px;
+    bottom: 64px;
+  }
+  @include utils.media('tablet') {
+    justify-content: center;
+  }
+  &__title {
+    margin-bottom: 40px;
+    @include utils.media('tablet') {
+      margin-bottom: 80px;
+    }
+  }
+}

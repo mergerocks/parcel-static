@@ -1,0 +1,8 @@
+@use './config/normalize';
+@use './config/reset';
+@use './config/common';
+
+// Components
+@use './components/title';
+@use './components/cover';
+@use './components/index-page';
