@@ -5,8 +5,12 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "dev": "parcel src/index.html --no-cache",
-    "prebuild": "rimraf dist",
-    "build": "parcel build src/index.html --no-cache"
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "parcel build src/index.html --no-cache",
+    "prebuild:github": "npm run clean",
+    "build:github": "parcel build src/index.html --no-cache --public-url .",
+    "gh-pages": "sh ./gh-pages.sh"
   },
   "keywords": [],
   "author": "",
